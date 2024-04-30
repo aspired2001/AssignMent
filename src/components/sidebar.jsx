@@ -1,44 +1,56 @@
 import React, { useState } from "react";
-import { HiMenuAlt3 } from "react-icons/hi";
+
 import { MdOutlineDashboard } from "react-icons/md";
-import { RiSettings4Line } from "react-icons/ri";
-import { TbReportAnalytics } from "react-icons/tb";
-import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
-import { FiMessageSquare, FiFolder } from "react-icons/fi";
+import { IoFlagSharp } from "react-icons/io5";
+import { FaSailboat } from "react-icons/fa6";
+import { SiCoinmarketcap } from "react-icons/si";
+import { FaTools } from "react-icons/fa";
+import { FaDatabase } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+import { HiMenuAlt1 } from "react-icons/hi";
+
 import { Link } from "react-router-dom";
 import Hero from "./Hero";
 
 const Sidebar = () => {
     const menus = [
         { name: "Marketing Pass", link: "/", icon: MdOutlineDashboard },
-        { name: "MyBrands", link: "/", icon: AiOutlineUser },
-        { name: "Boat", link: "/", icon: FiMessageSquare },
-        { name: "Factory", link: "/", icon: TbReportAnalytics, margin: true },
-        { name: "Tools", link: "/", icon: FiFolder },
-        { name: "Data", link: "/", icon: AiOutlineHeart, margin: true },
-        { name: "Settings", link: "/", icon: RiSettings4Line },
+        { name: "MyBrands", link: "/", icon: IoFlagSharp },
+        { name: "LeadStream", link: "/", icon: FaSailboat },
+        { name: "MyMarketingCRM", link: "/", icon: SiCoinmarketcap, margin: true },
+        { name: "Tools", link: "/", icon: FaTools },
+        { name: "Data", link: "/", icon: FaDatabase, margin: true },
+        { name: "Settings", link: "/", icon: IoMdSettings },
     ];
     const [open, setOpen] = useState(false);
 
     return (
-        <section className="flex gap-1">
+        <section className="flex gap-1 ">
             <div
-                className={`relative bg-[#0e0e0e] min-h-screen ${open ? "w-72" : "w-16"} duration-500 text-gray-100 px-4`}
+                className={`absolute top-0 left-0 bg-[#0e0e0e] h-[1800px] w-16 duration-500 text-gray-100 px-4 ${open ? "w-72" : ""
+                    } z-10`}
                 onMouseEnter={() => setOpen(true)}
                 onMouseLeave={() => setOpen(false)}
             >
-                <div className="py-3 flex justify-end">
-                    <HiMenuAlt3
-                        size={26}
-                        className="cursor-pointer"
-                    />
+                <div className="py-3 flex justify-end cursor-pointer">
+                    {open ? (
+                        <div className="flex justify-center ">
+
+                            <img src="assets/SalesGuy.svg" alt="Sales Guy" className="w-[40px]" />
+                        <h2 className="text-white font-bold whitespace-nowrap text-center mt-3 text-[25px] font-serif px-2">MyMarketingApp</h2>
+
+                            
+                        </div>
+                    ) : (
+                        <img src="assets/SalesGuy.svg" alt="Sales Guy" />
+                    )}
                 </div>
                 <div className="mt-4 flex flex-col gap-4 relative">
                     {menus?.map((menu, i) => (
                         <Link
                             to={menu?.link}
                             key={i}
-                            className={` ${menu?.margin && "mt-5"} group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
+                            className={` ${menu?.margin && "mt-5"} group flex items-center text-sm  gap-3.5 font-bold p-2 hover:bg-gray-800 rounded-md `}
                         >
                             <div>{React.createElement(menu?.icon, { size: "20" })}</div>
                             <h2
@@ -61,12 +73,13 @@ const Sidebar = () => {
                 </div>
             </div>
             <div
-                className="text-xl text-gray-900 font-semibold relative"
+                className="text-xl text-gray-900 font-semibold relative ml-[60px]"
                 style={{
-                    backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/Map.jpg')",
+                    backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/Map.jpg')",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    width: "100%",
+                    width: "",
+                    height:"1800px",
                 }}
             >
                 {/* Content over the background image */}
